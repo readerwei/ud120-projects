@@ -11,8 +11,8 @@
 """
     
 import sys
-from time import time
-sys.path.append("../tools/")
+ from time import time
+sys.path.append("C:\\Users\\Wei\\Dropbox\\Programming\\Python\\ud120-projects\\tools")
 from email_preprocess import preprocess
 
 
