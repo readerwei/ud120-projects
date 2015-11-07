@@ -14,9 +14,12 @@
     enron_data["SKILLING JEFFREY K"]["bonus"] = 5600000
     
 """
-
 import pickle
-import poi_email_addresses
+import sys
+import re
+import math
+sys.path.append("../final_project")
+from poi_email_addresses import poiEmails
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
 len(enron_data)
@@ -29,4 +32,20 @@ for k,v in enron_data.iteritems():
     #print k    
     if v['poi'] == True:
         m = m + 1
-print m        
+print m
+emails = poiEmails()
+len(emails)
+enron_data["PRENTICE JAMES"]["total_stock_value"]
+enron_data["COLWELL WESLEY"]["from_this_person_to_poi"]
+enron_data["SKILLING JEFFREY K"]["exercised_stock_options"]
+m = 0
+for k,v in enron_data.iteritems():
+    #print k  
+    if math.isnan(float(v['total_payments'])):
+        m = m + 1
+print m
+m=0
+for k,v in enron_data.iteritems():
+    if v['poi'] and math.isnan(float(v['total_payments'])):
+        m = m + 1
+print m
