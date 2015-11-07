@@ -16,7 +16,17 @@
 """
 
 import pickle
-
+import poi_email_addresses
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
-
+len(enron_data)
+enron_data.keys()
+data1 = enron_data['BIBI PHILIPPE A']
+data1.keys()
+len(data1)
+m=0
+for k,v in enron_data.iteritems():
+    #print k    
+    if v['poi'] == True:
+        m = m + 1
+print m        
