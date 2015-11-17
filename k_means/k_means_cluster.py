@@ -35,6 +35,12 @@ def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature
     plt.savefig(name)
     plt.show()
 
+def featureScaling(arr):
+    minium = float(min(arr))
+    maximum = float(max(arr))
+    for i in range(0,len(arr)):
+        arr[i] = (arr[i]-minium)/(maximum-minium)
+    return arr
 
 
 ### load in the dict of dicts containing all the data on each person in the dataset
@@ -65,7 +71,7 @@ plt.show()
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
 cls = KMeans(n_clusters = 5)
-
+features_used = np.array(finance_features)[,1:3]
 pred = cls.fit_predict(np.array(finance_features))
 
 resultarr = []

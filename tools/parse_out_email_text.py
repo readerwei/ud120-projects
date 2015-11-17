@@ -34,7 +34,7 @@ def parseOutText(f):
         for word in text_list:
             word_stem = stemmer.stem(word)
             if not(word_stem in words):
-                words = words + " " + word_stem
+                words = words + word_stem + " "
         ### split the text string into individual words, stem each word,
         ### and append the stemmed word to words (make sure there's a single
         ### space between each stemmed word)
