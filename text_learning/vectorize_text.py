@@ -7,6 +7,12 @@ import sys
 
 sys.path.append( "../tools/" )
 from parse_out_email_text import parseOutText
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
+
+from nltk.corpus import stopwords
+
 
 """
     Starter code to process the emails from Sara and Chris to extract
@@ -69,10 +75,8 @@ from_chris.close()
 pickle.dump( word_data, open("your_word_data.pkl", "w") )
 pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
-
-
-
-
 ### in Part 4, do TfIdf vectorization here
-
-
+for word in word_data:
+    if word in stopwords.words('english'):
+        word_data.remove(word)
+#bag_of_words = vect
