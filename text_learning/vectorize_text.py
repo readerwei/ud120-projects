@@ -7,9 +7,7 @@ import sys
 
 sys.path.append( "../tools/" )
 from parse_out_email_text import parseOutText
-from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction.text import CountVectorizer
 
 from nltk.corpus import stopwords
 
@@ -48,7 +46,8 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         ### only look at first 200 emails when developing
         ### once everything is working, remove this line to run over full dataset
         temp_counter += 1
-        if temp_counter < 200:
+        #if temp_counter < 200:
+        if True:
             path = os.path.join('..', path[:-1])
             #print path
             email = open(path, "r")
@@ -76,7 +75,8 @@ pickle.dump( word_data, open("your_word_data.pkl", "w") )
 pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
 ### in Part 4, do TfIdf vectorization here
-for word in word_data:
-    if word in stopwords.words('english'):
-        word_data.remove(word)
+vectorizer = TfidfVectorizer(stop_words = 'english')
+tfidf = vectorizer.fit_transform(word_data)
+features = vectorizer.get_feature_names()
+print len(features)
 #bag_of_words = vect
